@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Model Viewer</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Add SLDS CSS -->
+  <link rel="stylesheet" href="https://www.lightningdesignsystem.com/assets/styles/salesforce-lightning-design-system.css">
+</head>
+<body class="slds-has-full-bleed">
+  <div class="container slds-grid slds-wrap">
+    <div class="sidebar slds-p-around_medium slds-box slds-size_1-of-3">
+      <h2>3D Model Viewer</h2>
+      <p class="slds-m-around_none">View and interact with your 3D models. Use the controls to zoom, rotate, and pan.</p>
+      <button id="loadModel" class="slds-button slds-button_brand">Load 3D Model</button>
+      <div id="modelStatus" class="slds-text-align_center slds-m-top_medium slds-text-color_success">Model not loaded</div>
+      <div class="controls slds-m-top_medium">
+        <label for="bgColor" class="slds-form-element__label">Background Color:</label>
+        <input type="color" id="bgColor" value="#222222" class="slds-input">
+      </div>
+    </div>
+
+    <div id="canvasContainer" class="slds-is-relative slds-scrollable_none slds-has-full-bleed slds-box slds-size_2-of-3"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
