@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Black-Scholes Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        form label, form input, form select, form button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        form input, form select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        form button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #search-bar {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+        }
+        #search-bar input {
+            flex-grow: 1;
+            margin-right: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Black-Scholes Option Pricing</h1>
+    <form id="bs-form">
+        <label>S (Current price): <input type="number" name="S" required></label>
+        <label>K (Strike price): <input type="number" name="K" required></label>
+        <label>r (Risk-free interest rate): <input type="number" name="r" step="0.01" required></label>
+        <label>T (Time to expiration): <input type="number" name="T" step="0.01" required></label>
+        <label>sigma (Volatility): <input type="number" name="sigma" step="0.01" required></label>
+        <label>Option type: 
+            <select name="option_type">
+                <option value="call">Call</option>
+                <option value="put">Put</option>
+            </select>
+        </label>
+        <button type="submit">Calculate</button>
+    </form>
+    <div id="result"></div>
+    <div id="search-bar">
+        <input type="text" placeholder="Search...">
+        <button>Search</button>
+    </div>
+
+    <script>
+        document.getElementById('bs-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            fetch('/', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('result').innerHTML = data;
+            });
+        });
+    </script>
+</body>
+</html>
